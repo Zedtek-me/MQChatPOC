@@ -1,2 +1,3 @@
 mqVenv
 __pycache__
+.env
