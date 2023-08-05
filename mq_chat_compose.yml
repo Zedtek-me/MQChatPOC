@@ -1,0 +1,40 @@
+services:
+  # main django backend
+  mq_chat:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/Home/
+      - ./.env:/Home/.env
+      - ./src:./Home/src
+    command: python src/manage.py runserver 0.0.0.0:9000
+    ports:
+      - 9000:9000
+      - 8000:8000
+    restart: always
+    depends_on: 
+      - broker
+      - database
+    image: mq_chat
+    container_name: mq_chat
+
+  # rabbitmq
+  broker:
+    image: rabbitmq
+    container_name: broker
+    ports:
+      - 
+    volumes:
+      - rabbitmq_configs/rabbitmq.conf:etc/rabbitmq/conf.d/rabbitmq.conf
+    restart: always
+
+  # database
+  database:
+    image: postgresql
+    container_name: database
+    environment:
+      - DATABASE_USER: "user"
+      - DATABASE_PASSWORD: "password"
+    ports:
+      - 5679:5679
