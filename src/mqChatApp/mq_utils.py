@@ -1,4 +1,4 @@
-from kombu import Producer, Connection, Consumer, Queue, Exchange, Message
+from kombu import Producer, Connection, Consumer, Queue, Exchange
 
 
 class MQUtils:

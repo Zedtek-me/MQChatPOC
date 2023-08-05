@@ -2,7 +2,7 @@ from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
 from .models import *
 from mq_utils import MQUtils
-from kombu import Message, Consumer
+from kombu import Message
 import json
 
 class WSConsumer(WebsocketConsumer):
