@@ -13,19 +13,19 @@ class MQUtils:
         return connection
 
     @staticmethod
-    def get_direct_consumer():
+    def get_direct_consumer()->Consumer:
         consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[MQUtils.direct_consumer_callback()])
         consumer.declare()
         return consumer
     
     @staticmethod
-    def get_group_consumer():
+    def get_group_consumer()->Consumer:
         consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[MQUtils.group_consumer_callback()])
         consumer.declare()
         return consumer
     
     @staticmethod
-    def get_default_publisher():
+    def get_default_publisher()->Producer:
         publisher = MQUtils._get_connection().Producer()
         publisher.declare()
         return publisher
@@ -51,7 +51,7 @@ class MQUtils:
         return group_exchange
 
     @staticmethod
-    def create_user_direct_queue(name):
+    def create_user_direct_queue(name="No User"):
         '''
         creates a queue when needed, especially when new user connects to the backend
         '''
@@ -92,7 +92,7 @@ class MQUtils:
         group_consumer = MQUtils.get_group_consumer()
         direct_exchange = MQUtils.default_direct_exchange()
         group_exchange = MQUtils.default_group_exchange()
-        direct_queue = MQUtils.create_user_direct_queue()
+        # direct_queue = MQUtils.create_user_direct_queue()
         default_publisher = MQUtils.get_default_publisher()
         messaging_infos = {
             "connection": connection,
@@ -100,7 +100,7 @@ class MQUtils:
             "group_consumer": group_consumer,
             "direct_exchange": direct_exchange,
             "group_exchange": group_exchange,
-            "direct_queue": direct_queue,
+            # "direct_queue": direct_queue,
             "default_publisher": default_publisher
         }
         return messaging_infos
