@@ -14,13 +14,13 @@ class MQUtils:
 
     @staticmethod
     def get_direct_consumer()->Consumer:
-        consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[MQUtils.direct_consumer_callback()])
+        consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[])
         consumer.declare()
         return consumer
     
     @staticmethod
     def get_group_consumer()->Consumer:
-        consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[MQUtils.group_consumer_callback()])
+        consumer = MQUtils._get_connection().Consumer(queues=[], channel=MQUtils._get_connection().channel(), call_backs=[])
         consumer.declare()
         return consumer
     
