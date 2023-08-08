@@ -7,7 +7,7 @@ services:
     volumes:
       - ./:/Home/
       - ./.env:/Home/.env
-      - ./src:./Home/src
+      - ./src:/Home/src
     command: python src/manage.py runserver 0.0.0.0:9000
     ports:
       - 9000:9000
@@ -24,17 +24,20 @@ services:
     image: rabbitmq
     container_name: broker
     ports:
-      - 
+      - 5672:5672
     volumes:
-      - rabbitmq_configs/rabbitmq.conf:etc/rabbitmq/conf.d/rabbitmq.conf
+      - ./rabbitmq_configs/rabbitmq.conf:/etc/rabbitmq/conf.d/rabbitmq.conf
     restart: always
 
   # database
   database:
-    image: postgresql
+    image: postgres
     container_name: database
     environment:
-      - DATABASE_USER: "user"
-      - DATABASE_PASSWORD: "password"
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: Custom
+      POSTGRES_HOST: db
     ports:
-      - 5679:5679
+      - 5432:5432
+    restart: always

@@ -8,7 +8,7 @@ class MQUtils:
     '''
     @staticmethod
     def _get_connection():
-        connection = Connection()#connect to amqp server here
+        connection = Connection("amqp://user:password@broker:5672//")#connect to amqp server here
         connection.drain_events()
         return connection
 
