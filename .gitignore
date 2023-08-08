@@ -1,3 +1,4 @@
 mqVenv
 __pycache__
 .env
+*.sqlite3
