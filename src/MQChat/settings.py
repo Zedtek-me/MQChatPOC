@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRETE_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,6 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'MQChat.wsgi.application'
+ASGI_APPLICATION = 'MQChat.asgi.application'
 
 
 # Database

@@ -15,8 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from mqChatApp.websocket_handlers import WSConsumer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('/', include("mqChatApp.urls")),
+    path("home_chat/", WSConsumer.as_asgi(), name="websocket root")
 ]
