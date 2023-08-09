@@ -20,6 +20,6 @@ from mqChatApp.websocket_handlers import WSConsumer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', include("mqChatApp.urls")),
+    path('', include("mqChatApp.urls")),
     path("home_chat/", WSConsumer.as_asgi(), name="websocket root")
 ]
