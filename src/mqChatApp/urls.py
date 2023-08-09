@@ -5,5 +5,5 @@ from mqChatApp.views import *
 
 urlpatterns = [
     path("rest_home/", return_custom_home_page, name="rest home page"),
-    path("operations/", csrf_exempt(GraphQLView.as_view(graphiql=True), name="graphQL endpoint"))
+    path("operations/", csrf_exempt(GraphQLView.as_view(graphiql=True)), name="graphQL endpoint")
 ]
