@@ -17,8 +17,8 @@ from channels.auth import AuthMiddlewareStack
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MQChat.settings')
 
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": URLRouter(AuthMiddlewareStack(
-        websocket_urls
-    ))
+    "http": get_asgi_application,
+    "websocket": AuthMiddlewareStack(
+        URLRouter(websocket_urls)
+        )
 })
