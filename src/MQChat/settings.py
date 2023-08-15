@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mqChatApp'
+    'mqChatApp',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
